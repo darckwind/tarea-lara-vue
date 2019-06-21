@@ -13,7 +13,7 @@ class Receta extends Model
     protected $primaryKey = 'chip';
 
     public function mascota(){
-        return $this->belongsTo('App\Mascota');
+        return $this->belongsTo('App\Dueno');
     }
     public function farmaco(){
         return $this->belongsTo('App\Farmaco');

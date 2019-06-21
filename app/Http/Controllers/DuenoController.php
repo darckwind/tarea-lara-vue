@@ -43,7 +43,17 @@ class DuenoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'rut' => 'required',
+            'nombre' => 'required',
+            'direccion' => 'required',
+        ]);
+
+        $dueno = new Dueno();
+        $dueno->rut = $request->input('rut');
+        $dueno->nombre = $request->input('nombre');
+        $dueno->direccion = $request->input('direccion');
+        $dueno->save();
     }
 
     /**

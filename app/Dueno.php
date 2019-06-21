@@ -26,4 +26,8 @@ class Dueno extends Model
     public function mascotas(){
         return $this->hasMany('App\Mascota');
     }
+
+    public function receta(){
+        return $this->hasMany('App\Receta');
+    }
 }

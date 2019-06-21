@@ -22,8 +22,8 @@ class CreateRecetasTable extends Migration
 
 
             $table->bigIncrements('folio');
-            $table->integer('nro_chip');
-            $table->foreign('nro_chip')->references('chip')->on('mascotas')->onDelete('cascade');
+            $table->String('rutdueno');
+            $table->foreign('rutdueno')->references('rut')->on('duenos')->onDelete('cascade');
             $table->String('nom_farm');
             $table->foreign('nom_farm')->references('nombre')->on('farmacos')->onDelete('cascade');
             $table->String('indicacion');

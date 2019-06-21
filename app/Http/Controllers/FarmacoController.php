@@ -35,7 +35,20 @@ class FarmacoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'gramaje' => 'required',
+            'nombre' => 'required',
+            'coste' => 'required',
+            'tipo' => 'required'
+        ]);
+
+        $farm =  new Farmaco();
+        $farm->nombre = $request->input('nombre');
+        $farm->gramaje = $request->input('gramaje');
+        $farm->tipo = $request->input('tipo');
+        $farm->costo = $request->input('coste');
+
+
     }
 
     /**
@@ -69,7 +82,14 @@ class FarmacoController extends Controller
      */
     public function update(Request $request, Farmaco $farmaco)
     {
-        //
+        $request->validate([
+            'gramaje' => 'required',
+            'nombre' => 'required',
+            'coste' => 'required',
+            'tipo' => 'required'
+        ]);
+
+        $farmaco->update($request->all());
     }
 
     /**
@@ -80,6 +100,6 @@ class FarmacoController extends Controller
      */
     public function destroy(Farmaco $farmaco)
     {
-        //
+        $farmaco -> delete();
     }
 }

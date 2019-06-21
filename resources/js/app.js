@@ -31,6 +31,8 @@ Vue.component('mascota-component', require('./components/Client/MascotaComponent
  * vista principal
  */
 
+Vue.component('new-component', require('./components/Home/NewRecetaComponent.vue').default);
+Vue.component('content-component', require('./components/Home/RecetaContentComponent.vue').default);
 Vue.component('total-component', require('./components/Home/TotalComponent.vue').default);
 Vue.component('receta-component', require('./components/Home/RecetaComponent.vue').default);
 Vue.component('home-component', require('./components/Home/HomeComponent.vue').default);

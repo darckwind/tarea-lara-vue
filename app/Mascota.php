@@ -16,7 +16,4 @@ class Mascota extends Model
         return $this->belongsTo('App\Dueno');
     }
 
-    public function receta(){
-        return $this->hasMany('App\Receta');
-    }
 }

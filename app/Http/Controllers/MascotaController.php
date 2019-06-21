@@ -35,7 +35,20 @@ class MascotaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'chip' => 'required',
+            'nombre' => 'required',
+            'raza' => 'required',
+            'tipo' => 'required'
+        ]);
+
+        $mas = new Mascota();
+        $mas->nombre =  $request->input('nombre');
+        $mas->tipo = $request->input('tipo');
+        $mas->raza = $request->input('raza');
+        $mas->rutdueno = $request->input('rutdueno');
+        $mas->save();
+
     }
 
     /**
@@ -69,7 +82,7 @@ class MascotaController extends Controller
      */
     public function update(Request $request, Mascota $mascota)
     {
-        //
+        $mascota->update($request->all());
     }
 
     /**
@@ -80,6 +93,6 @@ class MascotaController extends Controller
      */
     public function destroy(Mascota $mascota)
     {
-        //
+        $mascota->delete();
     }
 }
