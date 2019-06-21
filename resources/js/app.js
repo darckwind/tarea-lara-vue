@@ -13,13 +13,27 @@ window.Vue = require('vue');
  * Vue components. It will recursively scan this directory for the Vue
  * components and automatically register them with their "basename".
  *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
+ * Eg. ./components/HomeComponent.vue -> <example-component></example-component>
  */
 
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+
+/**
+ * vista del cliente
+ */
+Vue.component('client-component', require('./components/Client/ClientComponent.vue').default);
+Vue.component('mascota-component', require('./components/Client/MascotaComponent.vue').default);
+
+
+/**
+ * vista principal
+ */
+
+Vue.component('total-component', require('./components/Home/TotalComponent.vue').default);
+Vue.component('receta-component', require('./components/Home/RecetaComponent.vue').default);
+Vue.component('home-component', require('./components/Home/HomeComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

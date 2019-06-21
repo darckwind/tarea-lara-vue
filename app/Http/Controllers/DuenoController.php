@@ -7,6 +7,14 @@ use Illuminate\Http\Request;
 
 class DuenoController extends Controller
 {
+
+    /**
+     * mediante $this->>middleware(auth); se garantisa el acceso unicacmente cuando se encuentre logeado el usuario
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +22,7 @@ class DuenoController extends Controller
      */
     public function index()
     {
-        //
+        return view('client');
     }
 
     /**
