@@ -35,7 +35,12 @@ class RecetaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'rut' => 'required',
+            'farmaco' => 'required',
+            'indicacion' => 'required',
+            'costo' => 'required'
+        ]);
     }
 
     /**
@@ -69,7 +74,8 @@ class RecetaController extends Controller
      */
     public function update(Request $request, Receta $receta)
     {
-        //
+        $receta->update($request->all());
+
     }
 
     /**
@@ -80,6 +86,6 @@ class RecetaController extends Controller
      */
     public function destroy(Receta $receta)
     {
-        //
+        $receta->delete();
     }
 }
