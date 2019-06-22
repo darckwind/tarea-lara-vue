@@ -1765,8 +1765,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      recetas: [{
+        'folio': 1,
+        'cliente': 'narnia',
+        'costo': 2,
+        'farmaco': 'aaaaaa',
+        'indicacion': 'asdasdasd'
+      }]
+    };
+  },
   components: {
     NewRecetaComponent: _NewRecetaComponent__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  methods: {
+    addReceta: function addReceta(receta) {
+      this.recetas.push(receta);
+    }
   },
   mounted: function mounted() {
     console.log('Component mounted.');
@@ -1807,8 +1823,36 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "NewRecetaComponent"
+  data: function data() {
+    return {
+      ruts: '',
+      farmacos: '',
+      indicacions: ''
+    };
+  },
+  name: "NewRecetaComponent",
+  methods: {
+    newReceta: function newReceta() {
+      var receta = {
+        folio: 1,
+        cliente: this.ruts,
+        costo: 2222,
+        farmaco: this.farmacos,
+        indicacion: this.indicacions
+      };
+      this.$emit('new', receta);
+    }
+  }
 });
 
 /***/ }),
@@ -1836,7 +1880,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['receta'],
+  data: function data() {
+    return {};
+  },
   name: "RecetaComponent"
 });
 
@@ -37253,7 +37305,17 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container-fluid" }, [
     _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-md-6" }, [_c("receta-component")], 1),
+      _c(
+        "div",
+        { staticClass: "col-md-6" },
+        _vm._l(_vm.recetas, function(receta) {
+          return _c("receta-component", {
+            key: receta.folio,
+            attrs: { receta: receta }
+          })
+        }),
+        1
+      ),
       _vm._v(" "),
       _c(
         "div",
@@ -37263,7 +37325,7 @@ var render = function() {
           _vm._v(" "),
           _c("br"),
           _vm._v(" "),
-          _c("new-receta-component")
+          _c("new-receta-component", { on: { new: _vm.addReceta } })
         ],
         1
       )
@@ -37292,62 +37354,147 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "card" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c(
+      "form",
+      {
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.newReceta($event)
+          }
+        }
+      },
+      [
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "exampleFormControlInput1" } }, [
+            _vm._v("Rut Cliente")
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.ruts,
+                expression: "ruts"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: {
+              type: "text",
+              id: "exampleFormControlInput1",
+              placeholder: "11111111-1"
+            },
+            domProps: { value: _vm.ruts },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.ruts = $event.target.value
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "exampleFormControlSelect1" } }, [
+            _vm._v("Farmaco")
+          ]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.farmacos,
+                  expression: "farmacos"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { id: "exampleFormControlSelect1" },
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.farmacos = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                }
+              }
+            },
+            [
+              _c("option", [_vm._v("1")]),
+              _vm._v(" "),
+              _c("option", [_vm._v("2")]),
+              _vm._v(" "),
+              _c("option", [_vm._v("3")]),
+              _vm._v(" "),
+              _c("option", [_vm._v("4")]),
+              _vm._v(" "),
+              _c("option", [_vm._v("5")])
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "exampleFormControlTextarea1" } }, [
+            _vm._v("Indicaciones Tratamiento")
+          ]),
+          _vm._v(" "),
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.indicacions,
+                expression: "indicacions"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { id: "exampleFormControlTextarea1", rows: "4" },
+            domProps: { value: _vm.indicacions },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.indicacions = $event.target.value
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn-lg btn-block btn btn-danger",
+            attrs: { type: "submit" }
+          },
+          [_vm._v("Guardar")]
+        )
+      ]
+    )
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("form", [
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "exampleFormControlInput1" } }, [
-          _vm._v("Email address")
-        ]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: {
-            type: "email",
-            id: "exampleFormControlInput1",
-            placeholder: "name@example.com"
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "exampleFormControlSelect1" } }),
-        _vm._v(" "),
-        _c(
-          "select",
-          {
-            staticClass: "form-control",
-            attrs: { id: "exampleFormControlSelect1" }
-          },
-          [
-            _c("option", [_vm._v("1")]),
-            _vm._v(" "),
-            _c("option", [_vm._v("2")]),
-            _vm._v(" "),
-            _c("option", [_vm._v("3")]),
-            _vm._v(" "),
-            _c("option", [_vm._v("4")]),
-            _vm._v(" "),
-            _c("option", [_vm._v("5")])
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "exampleFormControlTextarea1" } }, [
-          _vm._v("Example textarea")
-        ]),
-        _vm._v(" "),
-        _c("textarea", {
-          staticClass: "form-control",
-          attrs: { id: "exampleFormControlTextarea1", rows: "3" }
-        })
-      ])
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h3", [_vm._v(" Nueva Receta")])
     ])
   }
 ]
@@ -37372,35 +37519,33 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "card" },
-    [
-      _vm._m(0),
+  return _c("div", { staticClass: "card" }, [
+    _c("div", { staticClass: "card-header" }, [
+      _vm._v(
+        "\n        Folio receta: " + _vm._s(_vm.receta.folio) + "\n        "
+      ),
+      _c("br"),
+      _vm._v("\n        cliente: " + _vm._s(_vm.receta.cliente) + "\n        "),
+      _c("br"),
+      _vm._v("\n        costo: " + _vm._s(_vm.receta.costo) + "\n    ")
+    ]),
+    _vm._v(" "),
+    _c("ul", { staticClass: "list-group list-group-flush" }, [
+      _c("li", { staticClass: "list-group-item" }, [
+        _vm._v("Farmaco: " + _vm._s(_vm.receta.farmaco))
+      ]),
       _vm._v(" "),
-      _c("content-component"),
-      _vm._v(" "),
-      _c("a", { staticClass: "btn btn-danger", attrs: { href: "#" } }, [
-        _vm._v("Delete")
+      _c("li", { staticClass: "list-group-item" }, [
+        _vm._v("indicacion: " + _vm._s(_vm.receta.indicacion))
       ])
-    ],
-    1
-  )
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
-      _vm._v("\n        Folio receta:\n        "),
-      _c("br"),
-      _vm._v("\n        cliente:\n        "),
-      _c("br"),
-      _vm._v("\n        costo:\n    ")
+    ]),
+    _vm._v(" "),
+    _c("a", { staticClass: "btn btn-danger", attrs: { href: "#" } }, [
+      _vm._v("Delete")
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
