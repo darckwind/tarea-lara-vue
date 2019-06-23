@@ -9,15 +9,21 @@
                 <label for="exampleFormControlInput1">Rut Cliente</label>
                 <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="11111111-1" v-model="ruts">
             </div>
-            <div class="form-group">
-                <label for="exampleFormControlSelect1">Farmaco</label>
-                <select class="form-control" id="exampleFormControlSelect1" v-model="farmacos">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                </select>
+            <div class="row">
+                <div class="form-group col-md-9">
+                    <label for="exampleFormControlSelect1">Farmaco</label>
+                    <select class="form-control" id="exampleFormControlSelect1" v-model="farmacos">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="exampleFormControlSelect1">cantidad</label>
+                    <input type="number" class="form-control" v-model="cantidad">
+                </div>
             </div>
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Indicaciones Tratamiento</label>
@@ -37,6 +43,7 @@
                 ruts:'',
                 farmacos:'',
                 indicacions:'',
+                cantidad:''
             }
         },
         name: "NewRecetaComponent",
@@ -47,7 +54,8 @@
                     cliente: this.ruts,
                     costo:2222,
                     farmaco:this.farmacos,
-                    indicacion:this.indicacions
+                    indicacion:this.indicacions,
+                    cantidad:this.cantidad
                 };
 
                 this.$emit('new',receta);

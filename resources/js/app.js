@@ -23,6 +23,7 @@ window.Vue = require('vue');
 /**
  * vista del cliente
  */
+Vue.component('home-client-component', require('./components/Client/HomeClientComponent.vue').default);
 Vue.component('client-component', require('./components/Client/ClientComponent.vue').default);
 Vue.component('mascota-component', require('./components/Client/MascotaComponent.vue').default);
 

@@ -1,14 +1,15 @@
 <template>
-    <div class="container">
-        <div class="card" style="width: 18rem;">
+
+    <div class="col-md-8">
+        <div class="card">
             <div class="card-header">
                 Cliente nombre:
             </div>
             <mascota-component></mascota-component>
             <a href="#" class="btn btn-danger">Delete</a>
         </div>
-
     </div>
+
 </template>
 
 <script>

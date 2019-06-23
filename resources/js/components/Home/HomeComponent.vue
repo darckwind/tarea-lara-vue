@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <receta-component v-for="receta in recetas" :key="receta.folio" :receta="receta"></receta-component>
+                <receta-component v-for="(receta, index) in recetas" :key="receta.folio" :receta="receta" @delete="deleteReceta(index)" style="margin-bottom:4%;"></receta-component>
             </div>
             <div class="col-md-4">
                 <total-component></total-component>
@@ -20,11 +20,12 @@
         data(){
             return{
                 recetas:[{
-                    'folio': 1,
+                    'folio': 2,
                     'cliente':'narnia',
                     'costo':2,
                     'farmaco':'aaaaaa',
-                    'indicacion':'asdasdasd'
+                    'indicacion':'asdasdasd',
+                    'cantidad':3
                 }]
             }
         },
@@ -32,6 +33,9 @@
         methods:{
             addReceta(receta){
                 this.recetas.push(receta);
+            },
+            deleteReceta(index){
+                this.recetas.splice(index, 1);
             }
         },
         mounted() {

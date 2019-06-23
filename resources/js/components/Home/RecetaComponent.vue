@@ -8,10 +8,10 @@
             costo: {{receta.costo}}
         </div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">Farmaco: {{receta.farmaco}}</li>
+            <li class="list-group-item">Farmaco: {{receta.farmaco}}      Uni :{{receta.cantidad}}</li>
             <li class="list-group-item">indicacion: {{receta.indicacion}}</li>
         </ul>
-        <a href="#" class="btn btn-danger">Delete</a>
+        <button class="btn-block btn btn-danger" v-on:click="onClickDelete()"> Eliminar</button>
     </div>
 
 </template>
@@ -23,6 +23,11 @@
             return{
 
             }
+        },
+        methods:{
+            onClickDelete(){
+              this.$emit('delete');
+          }
         },
         name: "RecetaComponent"
     }
