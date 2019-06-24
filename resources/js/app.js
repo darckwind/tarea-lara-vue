@@ -26,7 +26,8 @@ window.Vue = require('vue');
 Vue.component('home-client-component', require('./components/Client/HomeClientComponent.vue').default);
 Vue.component('client-component', require('./components/Client/ClientComponent.vue').default);
 Vue.component('mascota-component', require('./components/Client/MascotaComponent.vue').default);
-
+Vue.component('new-mascota-component', require('./components/Client/NewMascotaComponet.vue').default);
+Vue.component('new-client-component', require('./components/Client/NewClientComponent').default);
 
 /**
  * vista principal
